@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="all-products">
+    {% for product in products %}
+    <div class="product">
+        <h4><a href="{{product.image_url}}">{{ product.title }}</a></h2>
+            <img class="product-img" src="{{product.image_url}}" alt="pic">
+            <h4> {{product.price}} yen</h4>
+            <p class="description">{{product.description}}</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}

@@ -1,2 +1,2 @@
-# project_COMP307
-COMP307 Final Project
+# django-marketplace
+A basic marketplace web app to learn Django.
