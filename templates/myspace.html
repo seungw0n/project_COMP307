@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>My Account</h2>
+<div class="all-products">
+    {% for product in products %}
+    <div class="myproduct">
+        <h4><a href="{{product.image_url}}">{{ product.title }}</a></h2>
+            <img class="product-img" src="{{product.image_url}}" alt="pic">
+            <h4> {{product.price}} $</h4>
+            <p class="description">{{product.description}}</p>
+    </div>
+    {% endfor %}
+</div>
+<a class="button" href="{% url 'addItem' %}">Add your item</a>
+{% endblock content %}
