@@ -1,9 +1,11 @@
-from django import forms
+from django.forms import ModelForm
+from .models import Product
 
-class ProductForm(forms.Form):
-    title = forms.CharField(max_length=100)
-    description = forms.CharField(max_length=500)
-    image_url = forms.ImageField()
-    price = forms.IntegerField()
+class ProductForm(ModelForm):
+   class Meta:
+        model = Product
+        fields = ['title', 'description', 'image_url' , 'price']
+   
+
 
    

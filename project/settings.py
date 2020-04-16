@@ -128,3 +128,7 @@ STATICFILES_DIRS = [
 
 LOGOUT_REDIRECT_URL = 'home'
 LOGIN_REDIRECT_URL = 'home'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = '/Users/victormassenet/OneDrive/Documents/McGill_S6/COMP307/project/project_COMP307'
+

@@ -1,12 +1,26 @@
 
 {% load widget_tweaks %}
-
-{% for field in form %}
-<div class="form-group">
-    
-    {{ field.name }}
-    <br>
-    {{field}}
-    
+<br>
+<div>
+    Title: <input type="text" name="title" />
+    {{form.title.errors}}
 </div>
-{% endfor %}
+  
+<br>
+<div>
+    Image: <input type="file" name="image_url" />
+    {{form.image_url.errors}}
+</div>
+      <br>
+
+  <div>
+    Description: <input type="text" name="description" />
+    {{form.description.errors}}
+  </div>
+      <br>
+
+    <div>
+    Price: <input type="number" name="price" />
+    {{form.price.errors}}
+    </div>
+    <br>
