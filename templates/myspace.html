@@ -13,5 +13,13 @@
     </div>
     {% endfor %}
 </div>
+
+
 <a href="{% url 'addItem' %}"><input type="button" value="Add your item" class="btn btn-primary" /></a>
+<br>
+<br>
+<h3>Chat Room</h3>
+<div class="chat">
+    <iframe src="{% url 'index' %}" height="300" width="305px" style="margin-top: 30px;"></iframe>
+</div>
 {% endblock content %}
