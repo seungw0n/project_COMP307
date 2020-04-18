@@ -6,12 +6,13 @@
     <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/market.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}"
     {% block stylesheet %}{% endblock %}
 </head>
 
 <body>
     {% block body %}
-    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+    <!-- <nav class="navbar navbar-expand-sm navbar-light bg-light">
         <a class="navbar-brand" href="{% url 'home' %}">Marketplace</a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
@@ -50,7 +51,34 @@
             </ul>
         </div>
 
-    </nav>
+    </nav> -->
+
+<div id="topNavBar">
+    <ul class="topNavBar-ul">
+        {% if user.username %}
+        <li class="topNavBar-li"><a class="menuLink" href="{% url 'logout' %}">LOGOUT</a></li>
+        <li class="topNavBar-li"><a class="menuLink" href="#">MY PAGE</a></li>
+        {% else %}
+        <li class="topNavBar-li"><a class="menuLink" href="{% url 'login' %}">LOGIN</a></li>
+        <li class="topNavBar-li"><a class="menuLink" href="{% url 'signup' %}">JOIN</a></li>
+        {% endif %}
+        <li class="topNavBar-li"><a class="menuLink" href="#">NOTICE</a></li>
+        <li class="topNavBar-li"><a class="menuLink" href="#">FAQ</a></li>
+    </ul>
+</div>
+
+<div id="bottomNavBar">
+    <ul class="bottomNavBar-ul">
+        <li class="bottomNavBar-li"><a class="logo" href="{% url 'home' %}">LOOK-N-FIT</a></li>
+        <li class="bottomNavBar-li"><a class="typeLink" href="#">BEST SELLER</a></li>
+        <li class="bottomNavBar-li"><a class="typeLink" href="#">OUTER</a></li>
+        <li class="bottomNavBar-li"><a class="typeLink" href="#">TOP/SHIRT</a></li>
+        <li class="bottomNavBar-li"><a class="typeLink" href="#">KNIT/CARDIGAN</a></li>
+        <li class="bottomNavBar-li"><a class="typeLink" href="#">BOTTOM</a></li>
+        <li class="bottomNavBar-li"><a class="typeLink" href="#">SHOES/BAG</a></li>
+        <li class="bottomNavBar-li"><a class="typeLink" href="#">ACC</a></li>
+    </ul>
+</div>
 
     <div class="container">
         {% block content %}
