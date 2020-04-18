@@ -58,6 +58,7 @@
         {% if user.username %}
         <li class="topNavBar-li"><a class="menuLink" href="{% url 'logout' %}">LOGOUT</a></li>
         <li class="topNavBar-li"><a class="menuLink" href="#">MY PAGE</a></li>
+        <li class="topNavBar-li"><a class="menuLink" href="#">CART</a></li>
         {% else %}
         <li class="topNavBar-li"><a class="menuLink" href="{% url 'login' %}">LOGIN</a></li>
         <li class="topNavBar-li"><a class="menuLink" href="{% url 'signup' %}">JOIN</a></li>
