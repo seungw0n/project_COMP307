@@ -4,11 +4,11 @@
 <div class="all-products">
     {% for product in products %}
     <div class="product">
-        <h4><a href="{{product.image_url}}">{{ product.title }}</a></h2>
+        <h4><a href="{{product.image_url}}">{{ product.title }}</a></h4>
             <img class="product-img" src="{{product.image_url}}" alt="pic">
-            <h4> {{product.price}} $</h4>
+            <h4> ${{product.price}}</h4>
             <p class="description">{{product.description}}</p>
-            <p class="creator"> created by {{product.owner}}</p>
+            <p class="creator" style="font-size:10px;"> Owner: {{product.owner}}</p>
     </div>
     {% endfor %}
 </div>
