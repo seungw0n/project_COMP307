@@ -1,7 +1,3 @@
-body {
-    background-color: ghostwhite;
-}
-
 .product-img {
   display: block;
   max-width: 100px;
@@ -37,7 +33,7 @@ body {
 .description {
     width: 300px;
     text-align: center;
-}  
+}
 
 .all-products {
     display: flex;
