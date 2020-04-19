@@ -2,4 +2,15 @@
 
 {% block content %}
 <h2>Your Shopping Cart</h2>
+{% for product in products %}
+    <div class="card flex-row flex-wrap" style="width:60%;">
+        <div class="card-header border-0">
+            <img src="{{ product.image_url.url }}" alt="Product image" style="width:70px;height:70px;"/>
+        </div>
+        <div class="card-block px-2">
+            <h4 class="card-title">{{ product.title }}</h4>
+            <p class="card-text">Price: ${{ product.price }}<br>Quantity:</p>
+        </div>
+    </div>
+{% endfor %}
 {% endblock content %}
