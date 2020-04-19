@@ -11,7 +11,7 @@
                 <p class="description">{{product.description}}</p>
                 <p class="creator" style="font-size:10px;"> Owner: {{product.owner}}</p>
         </div> -->
-        <a href="{{product.image_url}}" class="custom-card">
+        <a href="product/{{product.id}}" class="custom-card">
             <div class="card">
               <img class="card-img-top" src="{{ product.image_url.url }}" alt="Product image" style="width:200px;height:200px;"/>
               <div class="card-body">

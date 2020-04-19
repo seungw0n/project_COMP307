@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- <h2>{{ product.title }}</h2>
+<img src="{{ product.image_url.url }}" alt="Product image" />
+Product Description:<br>
+<p style="margin-left:15px;">{{ product.description }}</p><br> -->
+
+
+<div class="row">
+    <div class="col-sm-4" style="margin-right:10px;"><img src="{{ product.image_url.url }}" alt="Product image" /></div>
+	
+	<div class="col-md-7">
+		<h2><strong>{{ product.title }}</strong></h2>
+		<div class="product-description">{{ product.description }}</div>
+		<!-- <div class="product-rating"><i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star-o"></i> </div> -->
+		<hr>
+		<div class="product-price">CDN ${{ product.price }}</div>
+        {% if product.inventoryCount > 0 %}
+		    <div style="color:green;">In Stock</div>
+            {% if product.inventoryCount < 10 %}
+                <span style="color:orange;">Less than 10 left!</span>
+            {% endif %}
+        {% else %}
+            <span style="color:red;">Out of Stock</span>
+        {% endif %}
+		<hr>
+        {% if user.username %}
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="product" value="{{ product.id }}">
+                Quantity: <input type="number" class="form-control" name="quantity" min="0" style="width:70px;margin-bottom:10px;" />
+                {{ form.quantity.errors }}
+        		<div class="btn-group cart">
+        			<button type="submit" class="btn btn-success">
+        				Add to cart
+        			</button>
+        		</div>
+            </form>
+        		<!-- <div class="btn-group wishlist">
+        			<button type="button" class="btn btn-danger">
+        				Add to wishlist 
+        			</button>
+        		</div> -->
+        {% endif %}
+	</div>
+</div>
+<br><br>
+{% endblock content %}
