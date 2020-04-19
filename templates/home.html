@@ -2,7 +2,6 @@
 
 {% block content %}
 <div class="all-products">
-    
     <div class="card-deck">
         {% for product in products %}
         <!-- <div class="product">
@@ -14,7 +13,7 @@
         </div> -->
         <a href="{{product.image_url}}" class="custom-card">
             <div class="card">
-              <img class="card-img-top" src="{{ product.image_url }}" alt="Product image">
+              <img class="card-img-top" src="{{ product.image_url.url }}" alt="Product image" style="width:200px;height:200px;"/>
               <div class="card-body">
                 <h5 class="card-title">{{ product.title }}</h5>
                 <!-- <p class="card-text">{{ product.description }}</p> -->

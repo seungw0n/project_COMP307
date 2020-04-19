@@ -120,10 +120,6 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.1/howto/static-files/
-
-STATIC_URL = '/static/'
 
 ASGI_APPLICATION = "project.routing.application"
 
@@ -144,6 +140,14 @@ STATICFILES_DIRS = [
 LOGOUT_REDIRECT_URL = 'home'
 LOGIN_REDIRECT_URL = 'home'
 
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/2.1/howto/static-files/
+
+STATIC_URL = '/static/'
+STATIC_ROOT = '/media/'
+
 MEDIA_URL = '/media/'
 # MEDIA_ROOT = '/Users/victormassenet/OneDrive/Documents/McGill_S6/COMP307/project/project_COMP307'
+MEDIA_ROOT = '/Users/Greg/Desktop/McGill/U5/Winter 2020/COMP307/Project/new project repo/market/media'
+
 

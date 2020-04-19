@@ -4,8 +4,10 @@ from .forms import ProductForm
 from django.contrib.auth.decorators import login_required
 
 def home(request):
-    products = Product.objects.all()
-    return render(request, 'home.html', {'products': products})
+    # products = Product.objects.all()
+    # return render(request, 'home.html', {'products': products})
+    context = {'products': Product.objects.all()}
+    return render(request, 'home.html', context)
 
 def cart(request):
     return render(request, 'cart.html', {})

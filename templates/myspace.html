@@ -2,22 +2,44 @@
 
 {% block content %}
 <h2>My Account</h2>
+<p style="margin-left:15px;"><strong>Name:</strong> {{ user.first_name }} {{ user.last_name }}<br><strong>Email:</strong> {{ user.email }}</p><br>
+<h4>Your Posts:</h4>
 <div class="all-products">
-    {% for product in products %}
-    <div class="product">
-        <h4><a href="{{product.image_url}}">{{ product.title }}</a></h2>
-           
-            <img class="product-img" src="{{product.image_url}}" alt="pic">
-            <h4> {{product.price}} $</h4>
-            <p class="description">{{product.description}}</p>
+    <div class="card-deck">
+        {% for product in products %}
+        <!-- <div class="product">
+            <h4><a href="{{product.image_url}}">{{ product.title }}</a></h2>
+               
+                <img class="product-img" src="{{product.image_url}}" alt="pic">
+                <h4> {{product.price}} $</h4>
+                <p class="description">{{product.description}}</p>
+        </div> -->
+        <a href="{{product.image_url}}" class="custom-card">
+            <div class="card">
+              <img class="card-img-top" src="{{ product.image_url.url }}" alt="Product image" style="width:200px;height:200px;"/>
+              <div class="card-body">
+                <h5 class="card-title">{{ product.title }}</h5>
+                <!-- <p class="card-text">{{ product.description }}</p> -->
+                <p class="card-text">${{ product.price }}</p>
+              </div>
+              <div class="card-footer">
+                <!-- <small class="text-muted">Last updated 3 mins ago</small> -->
+                <small class="text-muted">Owner: {{product.owner}}</small>
+                <br>
+                <small class="text-muted">Number of items: {{product.inventoryCount}}</small>
+              </div>
+            </div>
+        </a>
+        {% endfor %}
     </div>
-    {% endfor %}
 </div>
 
 
-<a href="{% url 'addItem' %}"><input type="button" value="Add your item" class="btn btn-primary" /></a>
+<a href="{% url 'addItem' %}"><input type="button" value="Add item" class="btn btn-primary" /></a>
 <br>
 <br>
+<h4>Order History:</h4>
+<br><br>
 <h3>Chat Room</h3>
 <div class="chat">
     <iframe src="{% url 'index' %}" height="300" width="305px" style="margin-top: 30px;"></iframe>
