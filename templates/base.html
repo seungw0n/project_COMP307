@@ -82,7 +82,7 @@
         </ul>
     </div> -->
     
-    <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+    <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top" style="margin-bottom:30px;">
     <div class="container-fluid">
     	<a class="navbar-brand" href="{% url 'home' %}">LOOK-N-FIT</a>
     	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
@@ -121,7 +121,20 @@
     					<i class="fas fa-shopping-cart"></i> 0
     				</a>
     				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown2">
-    					
+                        <div class="dropdown-item">
+                            Item #1
+                            <button type="button" class="btn btn-danger btn-sm float-right">X</button>
+                        </div>
+                        <div class="dropdown-item">
+                            Item #2
+                            <button type="button" class="btn btn-danger btn-sm float-right">X</button>
+                        </div>
+                        <div class="dropdown-item">
+                            Item #3
+                            <button type="button" class="btn btn-danger btn-sm float-right">X</button>
+                        </div>
+    					<div class="dropdown-divider"></div>
+    					<a class="dropdown-item" href="{% url 'cart' %}">View Cart</a>
     		        </div>
     			</li>
     			{% endif %}
