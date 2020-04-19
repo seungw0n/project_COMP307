@@ -35,6 +35,7 @@ urlpatterns = [
     url('^login/$', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
     path('chat/', include('chat.urls')),
     path('product/<int:product_id>', views.productPage, name='productPage'),
+    path('', include('sendemail.urls')),
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
