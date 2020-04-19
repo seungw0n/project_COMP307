@@ -2,14 +2,55 @@
 
 {% block content %}
 <div class="all-products">
-    {% for product in products %}
-    <div class="product">
-        <h4><a href="{{product.image_url}}">{{ product.title }}</a></h4>
-            <img class="product-img" src="{{product.image_url}}" alt="pic">
-            <h4> ${{product.price}}</h4>
-            <p class="description">{{product.description}}</p>
-            <p class="creator" style="font-size:10px;"> Owner: {{product.owner}}</p>
+    
+    <div class="card-deck">
+        {% for product in products %}
+        <!-- <div class="product">
+            <h4><a href="{{product.image_url}}">{{ product.title }}</a></h4>
+                <img class="product-img" src="{{product.image_url}}" alt="pic">
+                <h4> ${{product.price}}</h4>
+                <p class="description">{{product.description}}</p>
+                <p class="creator" style="font-size:10px;"> Owner: {{product.owner}}</p>
+        </div> -->
+        <a href="{{product.image_url}}" class="custom-card">
+            <div class="card">
+              <img class="card-img-top" src="{{ product.image_url }}" alt="Product image">
+              <div class="card-body">
+                <h5 class="card-title">{{ product.title }}</h5>
+                <!-- <p class="card-text">{{ product.description }}</p> -->
+                <p class="card-text">${{ product.price }}</p>
+              </div>
+              <div class="card-footer">
+                <!-- <small class="text-muted">Last updated 3 mins ago</small> -->
+                <small class="text-muted">Owner: {{product.owner}}</small>
+              </div>
+            </div>
+        </a>
+        {% endfor %}
     </div>
-    {% endfor %}
+    
+    <!-- <div class="card-deck">
+      <div class="card">
+        <img class="card-img-top" src="..." alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img-top" src="..." alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
+      </div>
+    </div> -->
+    
 </div>
 {% endblock content %}

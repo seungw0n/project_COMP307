@@ -1,14 +1,16 @@
 {% extends 'base.html' %}
-{% block body %}
+{% block content %}
 <div class="container">
-    <br />
-    <h2>Add your item</h2>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {% include 'includes/formItem.html' %}
-        <button type="submit" class="btn btn-primary">Add</button>
-        <a href="{% url 'myspace' %}"><input type="button" value="Back" class="btn btn-primary" /></a>
+    <div class="form-addItem">
+        <br />
+        <h2>Add your item</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% include 'includes/formItem.html' %}
+            <button type="submit" class="btn btn-primary">Add</button>
+            <a href="{% url 'myspace' %}"><input type="button" value="Back" class="btn btn-primary" /></a>
 
-    </form>
+        </form>
+    </div>
 </div>
-{% endblock %}
+{% endblock content %}
