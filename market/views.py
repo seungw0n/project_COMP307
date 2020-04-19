@@ -43,7 +43,7 @@ def addItem(request):
 def addToCart(request):
     context = {}
     if request.method == 'POST':
-        form = ProductForm(request.POST)
+        form = CartForm(request.POST)
         if form.is_valid():
             context['product'] = Product.objects.all().filter(id=form.get('product'))
             prod = form.save(commit=False)
