@@ -17,6 +17,14 @@ def myspace(request):
     products = Product.objects.all().filter(owner=request.user)
     return render (request, 'myspace.html', {'products': products})
 
+def productPage(request, product_id=None):
+    products = Product.objects.all().filter(id=product_id)
+    if not products:
+        return HttpResponseNotFound('<h1>Page not found</h1>')
+    product = products[0]
+    context = {'product': product}
+    return render(request, 'productPage.html', context)
+
 @login_required
 def addItem(request):
     context = {'product': Product.objects.all()}
