@@ -4,7 +4,8 @@
 <h2>Contact Us</h2>
 <form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
+    <!-- {{ form.as_p }} -->
+    {% include 'includes/form.html' %}
     <div class="form-actions">
       <button type="submit">Send</button>
     </div>
