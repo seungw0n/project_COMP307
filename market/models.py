@@ -3,7 +3,7 @@ from django.conf import settings
 from django.contrib.auth.models import User
 
 def get_upload_path(instance, filename):
-    return 'user-' + str(instance.owner.id) + '/' + filename
+    return 'media/' + filename
 
 
 # Create your models here.
@@ -12,8 +12,8 @@ class Product(models.Model):
     title = models.TextField()
     description = models.TextField(max_length=10000)
     image_url = models.FileField(upload_to=get_upload_path)
-    # inventoryCount = models.IntegerField(default=0)
-    # created = models.DateTimeField(auto_now_add=True)
+    inventoryCount = models.IntegerField(default=0)
+    created = models.DateTimeField(auto_now_add=True)
     price = models.IntegerField()
 
     # def add_to_cart(self):
