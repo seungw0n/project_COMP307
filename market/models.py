@@ -14,7 +14,7 @@ class Product(models.Model):
     image_url = models.FileField(upload_to=get_upload_path)
     inventoryCount = models.IntegerField(default=0)
     created = models.DateTimeField(auto_now_add=True)
-    price = models.IntegerField()
+    price = models.FloatField()
     category = models.TextField()
 
     # def add_to_cart(self):
@@ -24,10 +24,20 @@ class Product(models.Model):
     def __str__(self):
         return self.title
 
-
-
-class CartItem(models.Model):
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+class OrderItem(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    quantity = models.IntegerField()
+    quantity = models.IntegerField(default=0)
+    ordered = models.BooleanField(default=False)
+    
+    def __str__(self):
+        return self.product
 
+
+class Order(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    products = models.ManyToManyField(OrderItem)
+    ordered = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.user

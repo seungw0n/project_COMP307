@@ -34,7 +34,8 @@ urlpatterns = [
     url('^logout/$', auth_views.LogoutView.as_view(), name='logout'),
     url('^login/$', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
     path('chat/', include('chat.urls')),
-    path('product/<int:product_id>', views.productPage, name='productPage'),
+    # path('product/<int:product_id>', views.productPage, name='productPage'),
+    path('product/<int:product_id>', views.addToCart, name='addToCart'),
     path('', include('sendemail.urls')),
 
 
