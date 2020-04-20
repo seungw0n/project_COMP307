@@ -9,8 +9,15 @@ def home(request):
     context = {'products': Product.objects.all()}
     return render(request, 'home.html', context)
 
+@login_required
 def cart(request):
-    context = {'products': Order.objects.get(user=request.user).products.all()}
+    # context = {'products': Order.objects.get(user=request.user).products.all()}
+    context = {}
+    orders = Order.objects.all().filter(user=request.user)
+    if orders.exists():
+        order = orders[0]
+        context = {'products': order.products.all()}
+    
     return render(request, 'cart.html', context)
 
 @login_required
@@ -57,11 +64,11 @@ def addToCart(request, product_id=None):
                 ordered = False
             )
             order_set = Order.objects.filter(user=request.user, ordered=False)
-            all_orders = Order.objects.get(user=request.user, ordered=False);
-            print(all_orders.user)
+            # all_orders = Order.objects.get(user=request.user, ordered=False);
+            # print(all_orders.user)
             if order_set.exists():
                 order = order_set[0]
-                if order.products.filter(product__id=item.id).exists():#######
+                if order.products.filter(product__id=item.id).exists():
                     order_item.quantity += int(form.data['quantity'])
                     order_item.save()
                     print("Added to existing item in existing order")
@@ -74,6 +81,8 @@ def addToCart(request, product_id=None):
                     print("Added new item to existing order")
                     return render(request, 'cart_confirmation.html', context)
             else:
+                order_item.quantity = int(form.data['quantity'])
+                order_item.save()
                 order = Order.objects.create(user = request.user)
                 order.products.add(order_item)
                 order.save()
