@@ -36,6 +36,7 @@ urlpatterns = [
     path('chat/', include('chat.urls')),
     path('product/<int:product_id>', views.productPage, name='productPage'),
     path('', include('sendemail.urls')),
+    path('product/<int:product_id>/modifyProduct/',views.modifyProduct,name='modifyProduct'),
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
