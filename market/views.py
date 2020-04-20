@@ -16,7 +16,9 @@ def cart(request):
     orders = Order.objects.all().filter(user=request.user)
     if orders.exists():
         order = orders[0]
-        context = {'products': order.products.all()}
+        # context = {'products': order.products.all(), 'order':order}
+        context = {'order' : order}
+        print(context)
     
     return render(request, 'cart.html', context)
 
