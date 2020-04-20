@@ -13,4 +13,13 @@
         </div>
     </div>
 {% endfor %}
+<form action="{% url 'charge' %}" method="post">
+    {% csrf_token %}
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="pk_test_SMDTVSddJhrVWotnREfGTQ2200sFnb3O5y"
+        data-description="PAYMENT"
+        data-amount="500"
+        data-locale="auto">
+    </script>
+</form>
 {% endblock content %}
