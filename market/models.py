@@ -30,8 +30,8 @@ class OrderItem(models.Model):
     quantity = models.IntegerField(default=0)
     ordered = models.BooleanField(default=False)
     
-    def __str__(self):
-        return self.product
+    # def __str__(self):
+    #     return self.product
 
 
 class Order(models.Model):
@@ -39,5 +39,5 @@ class Order(models.Model):
     products = models.ManyToManyField(OrderItem)
     ordered = models.BooleanField(default=False)
 
-    def __str__(self):
-        return self.user
+    # def __str__(self):
+    #     return self.user
