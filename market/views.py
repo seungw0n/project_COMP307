@@ -104,3 +104,13 @@ def modifyProduct(request, product_id=None):
             return redirect('home')
         context['form'] = form
     return render(request, 'modifyProduct.html', context)
+
+@login_required
+def deleteProduct(request, product_id=None):
+    products = Product.objects.all().filter(id=product_id)
+    if not products:
+        return HttpResponseNotFound('<h1>Page not found</h1>')
+    product = products[0]
+    product.delete()
+    context = {}
+    return render(request, 'deleteProduct.html', context)

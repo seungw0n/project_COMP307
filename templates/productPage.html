@@ -48,7 +48,8 @@ Product Description:<br>
         			</button>
 				</div> -->
 			{% if user.username == product.owner.username %}
-				<a href="{{product.id}}/modifyProduct"><input type="button" value="Modify item" class="btn btn-primary" /></a>
+				<a href="{{product.id}}/modifyProduct"><input type="button" value="Modify your item" class="btn btn-primary" /></a>
+				<a href="{{product.id}}/deleteProduct"><input type="button" value="Delete your item" class="btn btn-danger" /></a>
 			{% endif %}
         {% endif %}
 	</div>
