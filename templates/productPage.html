@@ -8,14 +8,19 @@ Product Description:<br>
 
 
 <div class="row">
-    <div class="col-sm-4" style="margin-right:10px;"><img src="{{ product.image_url.url }}" alt="Product image" /></div>
+    <div class="col-sm-4" style="margin-right:10px;"><img style="width:200px; height:200px;"src="{{ product.image_url.url }}" alt="Product image" /></div>
 	
 	<div class="col-md-7">
 		<h2><strong>{{ product.title }}</strong></h2>
 		<div class="product-description">{{ product.description }}</div>
+		<hr>
+		<div>Category : {{product.category}}</div>
+		<hr>
+		<div class="product-price">Created by {{ product.owner }}</div>
 		<!-- <div class="product-rating"><i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star-o"></i> </div> -->
 		<hr>
 		<div class="product-price">CDN ${{ product.price }}</div>
+		
         {% if product.inventoryCount > 0 %}
 		    <div style="color:green;">In Stock</div>
             {% if product.inventoryCount < 10 %}
@@ -41,7 +46,11 @@ Product Description:<br>
         			<button type="button" class="btn btn-danger">
         				Add to wishlist 
         			</button>
-        		</div> -->
+				</div> -->
+			{% if user.username == product.owner.username %}
+				<a href="{{product.id}}/modifyProduct"><input type="button" value="Modify your item" class="btn btn-primary" /></a>
+				<a href="{{product.id}}/deleteProduct"><input type="button" value="Delete your item" class="btn btn-danger" /></a>
+			{% endif %}
         {% endif %}
 	</div>
 </div>

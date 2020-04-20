@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="form-modifyProduct">
+        <br />
+        <h2>Modify your item</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% include 'includes/modifyForm.html' %}
+            <button type="submit" class="btn btn-primary">Add</button>
+            <a href="/product/{{product.id}}"><input type="button" value="Back" class="btn btn-primary" /></a>
+
+        </form>
+    </div>
+</div>
+{% endblock content %}

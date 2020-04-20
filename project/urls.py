@@ -37,6 +37,10 @@ urlpatterns = [
     # path('product/<int:product_id>', views.productPage, name='productPage'),
     path('product/<int:product_id>', views.addToCart, name='addToCart'),
     path('', include('sendemail.urls')),
+    path('product/<int:product_id>/modifyProduct/',views.modifyProduct,name='modifyProduct'),
+    path('product/<int:product_id>/deleteProduct/',views.deleteProduct,name='deleteProduct'),
     path('charge/', views.charge, name='charge'),
+
+
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
