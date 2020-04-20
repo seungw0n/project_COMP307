@@ -6,21 +6,16 @@
 Product Description:<br>
 <p style="margin-left:15px;">{{ product.description }}</p><br> -->
 
+<h2>Successfully added item {{ product.title }} to cart!</h2>
 
-<div class="row">
-    <div class="col-sm-4" style="margin-right:10px;"><img style="width:200px; height:200px;"src="{{ product.image_url.url }}" alt="Product image" /></div>
+<!-- <div class="row">
+    <div class="col-sm-4" style="margin-right:10px;"><img src="{{ product.image_url.url }}" alt="Product image" /></div>
 	
 	<div class="col-md-7">
 		<h2><strong>{{ product.title }}</strong></h2>
 		<div class="product-description">{{ product.description }}</div>
 		<hr>
-		<div>Category : {{product.category}}</div>
-		<hr>
-		<div class="product-price">Created by {{ product.owner }}</div>
-		<!-- <div class="product-rating"><i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star-o"></i> </div> -->
-		<hr>
 		<div class="product-price">CDN ${{ product.price }}</div>
-		
         {% if product.inventoryCount > 0 %}
 		    <div style="color:green;">In Stock</div>
             {% if product.inventoryCount < 10 %}
@@ -33,7 +28,7 @@ Product Description:<br>
         {% if user.username %}
             <form method="post">
                 {% csrf_token %}
-                <input type="hidden" name="product" value="{{ product.id }}">
+                <input type="hidden" name="product" value="{{ product }}">
                 Quantity: <input type="number" class="form-control" name="quantity" min="0" required="required" style="width:70px;margin-bottom:10px;" />
                 {{ form.quantity.errors }}
         		<div class="btn-group cart">
@@ -42,16 +37,8 @@ Product Description:<br>
         			</button>
         		</div>
             </form>
-        		<!-- <div class="btn-group wishlist">
-        			<button type="button" class="btn btn-danger">
-        				Add to wishlist 
-        			</button>
-				</div> -->
-			{% if user.username == product.owner.username %}
-				<a href="{{product.id}}/modifyProduct"><input type="button" value="Modify item" class="btn btn-primary" /></a>
-			{% endif %}
         {% endif %}
 	</div>
-</div>
+</div> -->
 <br><br>
 {% endblock content %}
