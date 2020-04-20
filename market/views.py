@@ -91,3 +91,18 @@ def addToCart(request, product_id=None):
                 print("Created order")
                 return render(request, 'cart_confirmation.html', context)
     return render(request, 'productPage.html', context)
+
+@login_required
+def modifyProduct(request, product_id=None):
+    products = Product.objects.all().filter(id=product_id)
+    if not products:
+        return HttpResponseNotFound('<h1>Page not found</h1>')
+    product = products[0]
+    context = {'product': product}
+    if request.method == 'POST':
+        form = ProductForm(request.POST or None,request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+        context['form'] = form
+    return render(request, 'modifyProduct.html', context)
