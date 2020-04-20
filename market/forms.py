@@ -5,7 +5,7 @@ from .models import CartItem
 class ProductForm(ModelForm):
    class Meta:
         model = Product
-        fields = ['title', 'description', 'image_url' , 'price', 'inventoryCount']
+        fields = ['title', 'description', 'image_url' , 'price', 'inventoryCount','category']
    
 
 class CartForm(ModelForm):

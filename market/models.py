@@ -15,6 +15,7 @@ class Product(models.Model):
     inventoryCount = models.IntegerField(default=0)
     created = models.DateTimeField(auto_now_add=True)
     price = models.IntegerField()
+    category = models.TextField()
 
     # def add_to_cart(self):
         # self.published_date = timezone.now()
