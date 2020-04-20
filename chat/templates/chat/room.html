@@ -3,11 +3,26 @@
 <head>
     <meta charset="utf-8"/>
     <title>Chat Room</title>
+    <style type="text/css"> 
+       .noselect {
+   cursor: default;
+   -webkit-user-select: none;
+   -webkit-touch-callout: none;
+   -khtml-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   -o-user-select: none;
+}
+
+.noselect:focus {
+   outline: none;
+}
+    </style> 
 </head>
 <body>
-    <textarea id="chat-log" cols="52" rows="17"></textarea><br/>
+    <textarea  class="noselect" readonly="readonly" unselectable="on" style ="border: 1px solid black; "id="chat-log" cols="52" rows="17"></textarea><br/>
     <input id="chat-message-input" type="text" size="52"/><br/>
-    <input id="chat-message-submit" type="button" value="Send"/>
+    <input class="btn btn-primary" id="chat-message-submit" type="button" value="Send"/>
 </body>
 <script>
 
