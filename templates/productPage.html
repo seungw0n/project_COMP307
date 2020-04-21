@@ -8,7 +8,7 @@ Product Description:<br>
 
 
 <div class="row">
-    <div class="col-sm-4" style="margin-right:10px;"><img style="width:200px; height:200px;"src="{{ product.image_url.url }}" alt="Product image" /></div>
+    <div class="col-sm-4" style="margin-right:10px;"><img style="width:200px;"src="{{ product.image_url.url }}" alt="Product image" /></div>
 	
 	<div class="col-md-7">
 		<h2><strong>{{ product.title }}</strong></h2>
@@ -31,7 +31,7 @@ Product Description:<br>
         {% endif %}
 		<hr>
         {% if user.username %}
-            <form method="post">
+            <form method="post" action="{% url 'addToCart' product_id=product.id %}">
                 {% csrf_token %}
                 <input type="hidden" name="product" value="{{ product.id }}">
                 Quantity: <input type="number" class="form-control" name="quantity" min="0" required="required" style="width:70px;margin-bottom:10px;" />

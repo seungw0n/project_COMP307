@@ -51,8 +51,8 @@ class Order(models.Model):
         total = 0
         for item in self.products.all():
             total += item.get_total_price()
-        return total
-
+        return round(total,2)
+        
     def get_total_price_stripe(self):
         total = 0
         for item in self.products.all():
