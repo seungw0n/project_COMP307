@@ -3,8 +3,8 @@
 {% block content %}
 <h2>Your Shopping Cart</h2>
 {% if order %}
-    {% for item in order.products.all %}
-        <!-- <div class="card flex-row flex-wrap" style="width:60%;">
+{% for item in order.products.all %}
+<!-- <div class="card flex-row flex-wrap" style="width:60%;">
             <div class="card-header border-0">
                 <img src="{{ item.product.image_url.url }}" alt="Product image" style="width:70px;height:70px;"/>
             </div>
@@ -15,53 +15,55 @@
 
             </div>
         </div> -->
-        <hr>
+<hr>
 
-        <div class="row" style="width:100%;">
-            <div class="col-md-3">
-                <a href="{% url 'productPage' product_id=item.product.id %}" class="cartItem">
-                    <img src="{{ item.product.image_url.url }}" alt="Product image" style="width:100px;height:100px;"/>
-                </a>
-            </div>
-            <div class="col-md-5">
-                <a href="{% url 'productPage' product_id=item.product.id %}" class="cartItem">
-                    <h4 class="card-title">{{ item.product.title }}</h4>
-                    Price: ${{ item.product.price }}<br>
-                    Quantity:{{ item.quantity }}
-                </a>
-            </div>
-            <div class="col-md-4">
-                <form method="post" action="{% url 'changeQuantity' %}">
-                    {% csrf_token %}
-                    <input type="hidden" name="product" value="{{ item.product.id }}">
-                    <button type="submit" class="btn btn-info float-right" style="margin:2px;">Edit quantity</button>
-                    <input type="number" class="form-control float-right" name="quantity" min="1" required="required" style="width:70px;margin:2px;" />
-                </form>
-                <br><br>
-                <form method="post" action="{% url 'removeFromCart' %}">
-                    {% csrf_token %}
-                    <input type="hidden" name="product" value="{{ item.product.id }}">
-                    <input type="hidden" name="quantity" value="0">
-                    <button type="submit" class="btn btn-danger float-right" style="margin:2px;">Remove</button>
-                </form>
-            </div>
-        </div>
-    {% endfor %}
-    <br>
-    <hr>
-    <h6 style="float:right;"><strong>Total Price:</strong> CDN ${{ order.get_total_price}}</h6>
+<div class="row" style="width:100%;">
+    <div class="col-md-3">
+        <a href="{% url 'productPage' product_id=item.product.id %}" class="cartItem">
+            <img src="{{ item.product.image_url.url }}" alt="Product image" style="width:100px;height:100px;" />
+        </a>
+    </div>
+    <div class="col-md-5">
+        <a href="{% url 'productPage' product_id=item.product.id %}" class="cartItem">
+            <h4 class="card-title">{{ item.product.title }}</h4>
+            Price: ${{ item.product.price }}<br>
+            Quantity:{{ item.quantity }}
+        </a>
+    </div>
+    <div class="col-md-4">
+        <form method="post" action="{% url 'changeQuantity' %}">
+            {% csrf_token %}
+            <input type="hidden" name="product" value="{{ item.product.id }}">
+            <button type="submit" class="btn btn-info float-right" style="margin:2px;">Edit quantity</button>
+            <input type="number" class="form-control float-right" name="quantity" min="1" required="required" style="width:70px;margin:2px;" />
+        </form>
+        <br><br>
+        <form method="post" action="{% url 'removeFromCart' %}">
+            {% csrf_token %}
+            <input type="hidden" name="product" value="{{ item.product.id }}">
+            <input type="hidden" name="quantity" value="0">
+            <button type="submit" class="btn btn-danger float-right" style="margin:2px;">Remove</button>
+        </form>
+    </div>
+</div>
+{% endfor %}
+<br>
+<hr>
+<h6 style="float:right;"><strong>Total Price:</strong> CDN ${{ order.get_total_price}}</h6>
 {% else %}
-    <hr>
-    Your cart is currently empty.
+<hr>
+Your cart is currently empty.
 {% endif %}
 
 <form action="{% url 'charge' %}" method="post">
     {% csrf_token %}
-    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-        data-key="pk_test_SMDTVSddJhrVWotnREfGTQ2200sFnb3O5y"
-        data-description="PAYMENT"
-        data-amount="500"
-        data-locale="auto">
+    <script src="https://checkout.stripe.com/checkout.js"
+     class="stripe-button"
+     data-key="pk_test_SMDTVSddJhrVWotnREfGTQ2200sFnb3O5y"
+     data-description="PAYMENT"
+     data-amount="{{ order.get_total_price_stripe }}"
+     data-currency="cad"
+     data-locale="auto">
     </script>
 </form>
 

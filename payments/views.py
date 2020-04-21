@@ -8,16 +8,16 @@ from django.conf import settings # to pass the key value
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
-@login_required
-def checkout(request):
-    context = {}
-    if request.method == 'GET':
-        orders = Order.objects.all().filter(user=request.user)
-        if orders.exists():
-            order = orders[0]
-            # context = {'products': order.products.all(), 'order':order}
-            context = {'order' : order}
-        return render(request, 'checkout.html', context)
+# @login_required
+# def checkout(request):
+#     context = {}
+#     if request.method == 'GET':
+#         orders = Order.objects.all().filter(user=request.user)
+#         if orders.exists():
+#             order = orders[0]
+#             # context = {'products': order.products.all(), 'order':order}
+#             context = {'order' : order}
+#         return render(request, 'checkout.html', context)
 
 
 # def get_context_data(self, **kwargs):
@@ -42,4 +42,4 @@ def charge(request):
 def detail(request):
     if request.method == 'GET':
         form = Checkout()
-        return render(request, 'details.html', {'form': form}) 
+        return render(request, 'details.html', {'form': form})
