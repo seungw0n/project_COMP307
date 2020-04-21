@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from market.models import Product, OrderItem, Order
 from django.contrib.auth.decorators import login_required
 from .forms import Checkout
+from datetime import datetime
 # # For stripe
 import stripe
 from django.conf import settings # to pass the key value
@@ -30,6 +31,9 @@ def charge(request):
         order = Order.objects.get(user=request.user)
         price = int(order.get_total_price())
         print(price)
+        order.ordered = True
+        order.orderDate = datetime.now()
+        order.save()
         charge = stripe.Charge.create(
             amount= price,
             currency='cad',

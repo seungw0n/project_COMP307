@@ -45,6 +45,9 @@ def myspace(request):
     if orders.exists():
         order = orders[0]
         context['order'] = order
+    order_history = Order.objects.all().filter(user=request.user, ordered=True)
+    if order_history.exists():
+        context['order_history'] = order_history
         
     return render (request, 'myspace.html', context)
 

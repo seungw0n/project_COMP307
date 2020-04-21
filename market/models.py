@@ -34,15 +34,19 @@ class OrderItem(models.Model):
 
     # def __str__(self):
     #     return self.product
+    
+    def get_total_price_true(self):
+        return self.quantity * self.product.price
 
     def get_total_price(self):
-        return self.quantity * self.product.price
+        return "%.2f"%round(self.quantity * self.product.price, 2)
 
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     products = models.ManyToManyField(OrderItem)
     ordered = models.BooleanField(default=False)
     address = models.TextField(default="")
+    orderDate = models.DateTimeField(auto_now_add=True, blank=True)
 
     # def __str__(self):
     #     return self.user
@@ -50,11 +54,11 @@ class Order(models.Model):
     def get_total_price(self):
         total = 0
         for item in self.products.all():
-            total += item.get_total_price()
+            total += item.get_total_price_true()
         return "%.2f"%round(total,2)
         
     def get_total_price_stripe(self):
         total = 0
         for item in self.products.all():
-            total += item.get_total_price()
+            total += item.get_total_price_true()
         return total * 100
