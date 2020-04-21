@@ -12,6 +12,7 @@ def signup(request):
             user.profile.first_name = form.cleaned_data.get('first_name')
             user.profile.last_name = form.cleaned_data.get('last_name')
             user.profile.email = form.cleaned_data.get('email')
+            user.profile.address = form.cleaned_data.get('address')
             user.save()
             auth_login(request, user)
             return redirect('home')

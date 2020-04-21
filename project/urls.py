@@ -31,6 +31,7 @@ urlpatterns = [
     url('^cart/$', views.cart, name='cart'),
     url('^addItem/$', views.addItem, name='addItem'),
     url('^myspace/$', views.myspace, name='myspace'),
+    url('^edit_profile/$', views.editProfile, name='editProfile'),
     url('^signup/$', accounts_views.signup, name='signup'),
     url('^logout/$', auth_views.LogoutView.as_view(), name='logout'),
     url('^login/$', auth_views.LoginView.as_view(template_name='login.html'), name='login'),

@@ -2,7 +2,12 @@
 
 {% block content %}
 <h2>My Account</h2>
-<p style="margin-left:15px;"><strong>Name:</strong> {{ user.first_name }} {{ user.last_name }}<br><strong>Email:</strong> {{ user.email }}</p><br>
+<p style="margin-left:15px;">
+    <strong>Name:</strong> {{ user.first_name }} {{ user.last_name }}<br>
+    <strong>Email:</strong> {{ user.email }}<br>
+    <strong>Address:</strong> {{ user.profile.address }}<br>
+    <a href="{% url 'editProfile' %}"><input type="button" value="Edit Profile" class="btn btn-info" /></a>
+</p><br>
 <h4>Your Posts:</h4>
 <div class="all-products">
     <div class="card-deck">
