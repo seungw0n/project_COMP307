@@ -7,6 +7,8 @@ def get_upload_path(instance, filename):
 
 
 # Create your models here.
+
+
 class Product(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, default ='1')
     title = models.TextField()
@@ -29,10 +31,10 @@ class OrderItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=0)
     ordered = models.BooleanField(default=False)
-    
+
     # def __str__(self):
     #     return self.product
-    
+
     def get_total_price(self):
         return self.quantity * self.product.price
 
@@ -40,12 +42,19 @@ class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     products = models.ManyToManyField(OrderItem)
     ordered = models.BooleanField(default=False)
+    address = models.TextField(default="")
 
     # def __str__(self):
     #     return self.user
-    
+
     def get_total_price(self):
         total = 0
         for item in self.products.all():
             total += item.get_total_price()
-        return total
+        return round(total,2)
+        
+    def get_total_price_stripe(self):
+        total = 0
+        for item in self.products.all():
+            total += item.get_total_price()
+        return total * 100

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <p> This is check out page</p>
+    Total Price: ${{ order.get_total_price}}
+    <br><br><br>
+    <form action="{% url 'charge' %}" method="post">
+    {% csrf_token %}
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="pk_test_SMDTVSddJhrVWotnREfGTQ2200sFnb3O5y"
+        data-description="PAYMENT"
+        data-amount= "{{ order.get_total_price_stripe }}"
+        data-locale="auto">
+    </script>
+    </form>
+{% endblock content %}

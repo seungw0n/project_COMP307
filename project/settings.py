@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'channels',
     'accounts',
     'widget_tweaks',
+    'payments.apps.PaymentsConfig',
 ]
 
 MIDDLEWARE = [
@@ -138,6 +139,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
+LOGIN_URL = '/login'
 LOGOUT_REDIRECT_URL = 'home'
 LOGIN_REDIRECT_URL = 'home'
 
@@ -150,6 +152,7 @@ STATIC_ROOT = '/media/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = '/Users/victormassenet/OneDrive/Documents/McGill_S6/COMP307/project/project_COMP307/market/media'
 # MEDIA_ROOT = '/Users/Greg/Desktop/McGill/U5/Winter 2020/COMP307/Project/new project repo/market/media'
+
 #MEDIA_ROOT = '/Users/joeng-seungwon/github/project_COMP307/market/media'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

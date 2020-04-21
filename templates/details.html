@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>this is details page</h2>
+<form action="{% url 'checkout' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="form-signup">
+      <button type="submit" class ="btn btn-primary">NEXT</button>
+    </div>
+</form>
+{% endblock content %}

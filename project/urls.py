@@ -23,6 +23,7 @@ from django.urls import path, include
 
 from accounts import views as accounts_views
 from market import views
+from payments import views as payments_views
 
 urlpatterns = [
     url('^admin/', admin.site.urls),
@@ -34,12 +35,17 @@ urlpatterns = [
     url('^logout/$', auth_views.LogoutView.as_view(), name='logout'),
     url('^login/$', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
     path('chat/', include('chat.urls')),
-    # path('product/<int:product_id>', views.productPage, name='productPage'),
-    path('product/<int:product_id>', views.addToCart, name='addToCart'),
+    path('category/<str:cat>', views.category, name='category'),
+    path('product/<int:product_id>', views.productPage, name='productPage'),
+    path('product/add_to_cart/<int:product_id>', views.addToCart, name='addToCart'),
+    path('cart/change_quantity', views.changeQuantity, name='changeQuantity'),
+    path('cart/remove_from_cart', views.removeFromCart, name='removeFromCart'),
     path('', include('sendemail.urls')),
     path('product/<int:product_id>/modifyProduct/',views.modifyProduct,name='modifyProduct'),
     path('product/<int:product_id>/deleteProduct/',views.deleteProduct,name='deleteProduct'),
-    path('charge/', views.charge, name='charge'),
+    path('detail/', payments_views.detail, name='detail'),
+    path('charge/', payments_views.charge, name='charge'),
+    path('checkout/', payments_views.checkout, name='checkout'),
 
 
 

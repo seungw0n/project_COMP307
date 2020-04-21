@@ -46,7 +46,20 @@
                         <i class="fas fa-shopping-cart"></i> 0
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown2">
-                        <div class="dropdown-item">
+                        {% if order %}
+                            {% for item in order.products.all %}
+                                <a href="{% url 'productPage' product_id=item.product.id %}">
+                                    <div class="dropdown-item">
+                                            <img src="{{ item.product.image_url.url }}" alt="Product image" style="width:30px;height:30px;margin-right:10px;"/>{{ item.product.title }} &times; {{ item.quantity }}
+                                    </div>
+                                </a>
+                            {% endfor %}
+                        {% else %}
+                            <div class="dropdown-item">
+                                <span style="color:grey;">Your cart is currently empty.</span>
+                            </div>
+                        {% endif %}
+                        <!-- <div class="dropdown-item">
                             Item #1
                             <button type="button" class="btn btn-danger btn-sm float-right">X</button>
                         </div>
@@ -57,7 +70,7 @@
                         <div class="dropdown-item">
                             Item #3
                             <button type="button" class="btn btn-danger btn-sm float-right">X</button>
-                        </div>
+                        </div> -->
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{% url 'cart' %}">View Cart</a>
                     </div>
@@ -69,13 +82,13 @@
 
     <div id="bottomNavBar">
         <ul class="bottomNavBar-ul">
-            <li class="bottomNavBar-li_logo"><a class="logo" href="{% url 'home' %}">LOOK-N-FIT</a></li>
-            <li class="bottomNavBar-li"><a class="typeLink" href="#">OUTER</a></li>
-            <li class="bottomNavBar-li"><a class="typeLink" href="#">TOP/SHIRT</a></li>
-            <li class="bottomNavBar-li"><a class="typeLink" href="#">KNIT/CARDIGAN</a></li>
-            <li class="bottomNavBar-li"><a class="typeLink" href="#">BOTTOM</a></li>
-            <li class="bottomNavBar-li"><a class="typeLink" href="#">SHOES/BAG</a></li>
-            <li class="bottomNavBar-li"><a class="typeLink" href="#">ACC</a></li>
+            <li class="bottomNavBar-li"><a class="logo" href="{% url 'home' %}">LOOK-N-FIT</a></li>
+            <li class="bottomNavBar-li"><a class="typeLink" href="/category/outer">OUTER</a></li>
+            <li class="bottomNavBar-li"><a class="typeLink" href="/category/top-shirt">TOP/SHIRT</a></li>
+            <li class="bottomNavBar-li"><a class="typeLink" href="/category/knit-cardigan">KNIT/CARDIGAN</a></li>
+            <li class="bottomNavBar-li"><a class="typeLink" href="/category/bottom">BOTTOM</a></li>
+            <li class="bottomNavBar-li"><a class="typeLink" href="/category/shoes-bag">SHOES/BAG</a></li>
+            <li class="bottomNavBar-li"><a class="typeLink" href="/category/acc">ACC</a></li>
         </ul>
     </div>
 
