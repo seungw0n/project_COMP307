@@ -19,7 +19,7 @@ Product Description:<br>
 		<div class="product-price">Created by {{ product.owner }}</div>
 		<!-- <div class="product-rating"><i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star-o"></i> </div> -->
 		<hr>
-		<div class="product-price">CDN ${{ product.price }}</div>
+		<div class="product-price">CDN ${{ product.price|floatformat:2 }}</div>
 		
         {% if product.inventoryCount > 0 %}
 		    <div style="color:green;">In Stock</div>
