@@ -43,7 +43,7 @@
                 <li class="nav-item dropdown active">
                     <!-- <a class="nav-link" href="/account/signup"><i class="fas fa-shopping-cart"></i></a> -->
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-shopping-cart"></i> 0
+                        <i class="fas fa-shopping-cart"></i> {{ order.products.all|length }}
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown2">
                         {% if order %}
@@ -97,6 +97,7 @@
         {% block content %}
         {% endblock %}
     </div>
+    {% include 'includes/footer.html' %}
     {% endblock body %}
 
     <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>

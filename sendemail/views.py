@@ -15,9 +15,10 @@ def contactView(request):
             message = form.cleaned_data['message']
             try:
                 send_mail(subject, message, from_email, ['admin@example.com'])
+                send_mail("LOOK-N-FIT", "Thank you for contacting us!", "admin@example.com", [from_email])
             except:
                 return HttpResponse('Invalid header found.')
-            return redirect('success')
+            return redirect('home')
     return render(request, "contactus.html", {'form': form})
 
 def successView(request):

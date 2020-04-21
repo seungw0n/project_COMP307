@@ -43,9 +43,9 @@ urlpatterns = [
     path('', include('sendemail.urls')),
     path('product/<int:product_id>/modifyProduct/',views.modifyProduct,name='modifyProduct'),
     path('product/<int:product_id>/deleteProduct/',views.deleteProduct,name='deleteProduct'),
-    path('detail/', payments_views.detail, name='detail'),
+    # path('detail/', payments_views.detail, name='detail'),
     path('charge/', payments_views.charge, name='charge'),
-    path('checkout/', payments_views.checkout, name='checkout'),
+    # path('checkout/', payments_views.checkout, name='checkout'),
 
 
 
