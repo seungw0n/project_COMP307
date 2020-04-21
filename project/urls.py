@@ -23,6 +23,7 @@ from django.urls import path, include
 
 from accounts import views as accounts_views
 from market import views
+from payments import views as payments_views
 
 urlpatterns = [
     url('^admin/', admin.site.urls),
@@ -39,7 +40,9 @@ urlpatterns = [
     path('', include('sendemail.urls')),
     path('product/<int:product_id>/modifyProduct/',views.modifyProduct,name='modifyProduct'),
     path('product/<int:product_id>/deleteProduct/',views.deleteProduct,name='deleteProduct'),
-    path('charge/', views.charge, name='charge'),
+    path('detail/', payments_views.detail, name='detail'),
+    path('charge/', payments_views.charge, name='charge'),
+    path('checkout/', payments_views.checkout, name='checkout'),
 
 
 

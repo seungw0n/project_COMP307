@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'channels',
     'accounts',
     'widget_tweaks',
+    'payments.apps.PaymentsConfig',
 ]
 
 MIDDLEWARE = [

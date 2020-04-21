@@ -3,24 +3,6 @@ from .models import Product, OrderItem, Order
 from .forms import ProductForm, CartForm
 from django.contrib.auth.decorators import login_required
 
-# # For stripe
-import stripe
-from django.conf import settings # to pass the key value
-stripe.api_key = settings.STRIPE_SECRET_KEY
-# def get_context_data(self, **kwargs):
-#     context = super().get_context_data(**kwargs)
-#     context['key'] = settings.STRIPE_PUBLISHABLE_KEY
-#     return context
-def charge(request):
-    if request.method == 'POST':
-        charge = stripe.Charge.create(
-            amount=500,
-            currency='cad',
-            description='PAYMENT',
-            source=request.POST['stripeToken']
-        )
-        return render(request, 'charge.html')
-
 def home(request):
     # products = Product.objects.all()
     # return render(request, 'home.html', {'products': products})
