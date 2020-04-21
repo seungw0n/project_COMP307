@@ -48,4 +48,4 @@ class Order(models.Model):
         total = 0
         for item in self.products.all():
             total += item.get_total_price()
-        return total
+        return round(total,2)

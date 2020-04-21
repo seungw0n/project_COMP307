@@ -6,39 +6,11 @@
 Product Description:<br>
 <p style="margin-left:15px;">{{ product.description }}</p><br> -->
 
-<h2>Successfully added item {{ product.title }} to cart!</h2>
+<h2>Successfully added item <strong>{{ product.title }}</strong> to cart!</h2>
+<br><br>
+<a href="{% url 'productPage' product_id=product.id %}" style="margin-right:1%;"><input type="button" value="Back to Item" class="btn btn-primary" /></a>
+<a href="{% url 'home' %}" style="margin-right:1%;"><input type="button" value="Keep Shopping" class="btn btn-primary" /></a>
+<a href="{% url 'cart' %}" style="margin-right:1%;"><input type="button" value="View Cart" class="btn btn-primary" /></a>
 
-<!-- <div class="row">
-    <div class="col-sm-4" style="margin-right:10px;"><img src="{{ product.image_url.url }}" alt="Product image" /></div>
-	
-	<div class="col-md-7">
-		<h2><strong>{{ product.title }}</strong></h2>
-		<div class="product-description">{{ product.description }}</div>
-		<hr>
-		<div class="product-price">CDN ${{ product.price }}</div>
-        {% if product.inventoryCount > 0 %}
-		    <div style="color:green;">In Stock</div>
-            {% if product.inventoryCount < 10 %}
-                <span style="color:orange;">Less than 10 left!</span>
-            {% endif %}
-        {% else %}
-            <span style="color:red;">Out of Stock</span>
-        {% endif %}
-		<hr>
-        {% if user.username %}
-            <form method="post">
-                {% csrf_token %}
-                <input type="hidden" name="product" value="{{ product }}">
-                Quantity: <input type="number" class="form-control" name="quantity" min="0" required="required" style="width:70px;margin-bottom:10px;" />
-                {{ form.quantity.errors }}
-        		<div class="btn-group cart">
-        			<button type="submit" class="btn btn-success">
-        				Add to cart
-        			</button>
-        		</div>
-            </form>
-        {% endif %}
-	</div>
-</div> -->
 <br><br>
 {% endblock content %}
