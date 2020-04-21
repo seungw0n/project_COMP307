@@ -39,6 +39,7 @@ urlpatterns = [
     path('', include('sendemail.urls')),
     path('product/<int:product_id>/modifyProduct/',views.modifyProduct,name='modifyProduct'),
     path('product/<int:product_id>/deleteProduct/',views.deleteProduct,name='deleteProduct'),
+    path('charge/', views.charge, name='charge'),
 
 
 
