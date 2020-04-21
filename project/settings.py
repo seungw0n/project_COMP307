@@ -154,3 +154,5 @@ MEDIA_ROOT = '/Users/Greg/Desktop/McGill/U5/Winter 2020/COMP307/Project/new proj
 #MEDIA_ROOT = '/Users/joeng-seungwon/github/project_COMP307/market/media'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+STRIPE_SECRET_KEY = 'sk_test_72fkv6dFA6blL2XyOjbOVdVm009yU5Asrt'
+STRIPE_PUBLISHABLE_KEY = 'pk_test_SMDTVSddJhrVWotnREfGTQ2200sFnb3O5y'

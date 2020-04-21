@@ -6,6 +6,24 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib import messages
 
+# # For stripe
+import stripe
+from django.conf import settings # to pass the key value
+stripe.api_key = settings.STRIPE_SECRET_KEY
+# def get_context_data(self, **kwargs):
+#     context = super().get_context_data(**kwargs)
+#     context['key'] = settings.STRIPE_PUBLISHABLE_KEY
+#     return context
+def charge(request):
+    if request.method == 'POST':
+        charge = stripe.Charge.create(
+            amount=500,
+            currency='cad',
+            description='PAYMENT',
+            source=request.POST['stripeToken']
+        )
+        return render(request, 'charge.html')
+
 def home(request):
     # products = Product.objects.all()
     # return render(request, 'home.html', {'products': products})
@@ -190,3 +208,12 @@ def modifyProduct(request, product_id=None):
         context['form'] = form
     return render(request, 'modifyProduct.html', context)
 
+@login_required
+def deleteProduct(request, product_id=None):
+    products = Product.objects.all().filter(id=product_id)
+    if not products:
+        return HttpResponseNotFound('<h1>Page not found</h1>')
+    product = products[0]
+    product.delete()
+    context = {}
+    return render(request, 'deleteProduct.html', context)

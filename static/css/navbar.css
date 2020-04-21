@@ -46,6 +46,11 @@ ul { list-style: none; }
 }
 .bottomNavBar-li a:hover {
     color: #A9A9A9;
+    text-decoration: none;
+}
+.bottomNavBar-li_logo a:hover {
+    color: black;
+    text-decoration: none;
 }
 .logo {
     color: black;

@@ -41,6 +41,9 @@ urlpatterns = [
     path('cart/remove_from_cart', views.removeFromCart, name='removeFromCart'),
     path('', include('sendemail.urls')),
     path('product/<int:product_id>/modifyProduct/',views.modifyProduct,name='modifyProduct'),
+    path('product/<int:product_id>/deleteProduct/',views.deleteProduct,name='deleteProduct'),
+    path('charge/', views.charge, name='charge'),
+
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
