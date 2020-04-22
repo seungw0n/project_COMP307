@@ -16,7 +16,7 @@ def contactView(request):
             message = form.cleaned_data['message']
             to_email = [settings.EMAIL_HOST_USER,]
             try:
-                send_mail(subject, message,from_email,recipient_email, fail_silently=False)
+                send_mail(subject, message,from_email,to_email, fail_silently=False)
                 send_mail("LOOK-N-FIT", "Thank you for contacting us!", settings.EMAIL_HOST_USER, [from_email], fail_silently=False)
             except:
                 return HttpResponse('Invalid header found.')

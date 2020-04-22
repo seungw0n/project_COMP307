@@ -156,12 +156,11 @@ MEDIA_ROOT = '/Users/victormassenet/OneDrive/Documents/McGill_S6/COMP307/project
 #MEDIA_ROOT = '/Users/joeng-seungwon/github/project_COMP307/market/media'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-# EMAIL_HOST = "smtp.gmail.com"
-# EMAIL_HOST_USER = "marketplace.comp307@gmail.com"
-# EMAIL_HOST_PASSWORD = "comp307.marketplace"
-# EMAIL_PORT = 587 # Recommand
-# EMAIL_USE_TLS = True
-# DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST_USER = "marketplace.comp307@gmail.com"
+EMAIL_HOST_PASSWORD = "comp307.marketplace"
+EMAIL_PORT = 587 # Recommand
+EMAIL_USE_TLS = True
 
 STRIPE_SECRET_KEY = 'sk_test_72fkv6dFA6blL2XyOjbOVdVm009yU5Asrt'
 STRIPE_PUBLISHABLE_KEY = 'pk_test_SMDTVSddJhrVWotnREfGTQ2200sFnb3O5y'
