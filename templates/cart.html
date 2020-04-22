@@ -2,7 +2,7 @@
 
 {% block content %}
 <h2>Your Shopping Cart</h2>
-{% if order %}
+{% if order and not order.ordered %}
 {% for item in order.products.all %}
 <!-- <div class="card flex-row flex-wrap" style="width:60%;">
             <div class="card-header border-0">
@@ -55,16 +55,11 @@
 Your cart is currently empty.
 {% endif %}
 
-<form action="{% url 'charge' %}" method="post">
-    {% csrf_token %}
-    <script src="https://checkout.stripe.com/checkout.js"
-     class="stripe-button"
-     data-key="pk_test_SMDTVSddJhrVWotnREfGTQ2200sFnb3O5y"
-     data-description="PAYMENT"
-     data-amount="{{ order.get_total_price_stripe }}"
-     data-currency="cad"
-     data-locale="auto">
-    </script>
-</form>
+{% if request.user.profile.address %}
+<a href="{%url 'details'%}"><input type="button" value="Checkout" class="btn btn-primary" /></a>
+{% else %}
+
+You must enter a delivery address in your profile to checkout.
+{% endif %}
 
 {% endblock content %}

@@ -2,7 +2,12 @@
 
 {% block content %}
 <h2>My Account</h2>
-<p style="margin-left:15px;"><strong>Name:</strong> {{ user.first_name }} {{ user.last_name }}<br><strong>Email:</strong> {{ user.email }}</p><br>
+<p style="margin-left:15px;">
+    <strong>Name:</strong> {{ user.first_name }} {{ user.last_name }}<br>
+    <strong>Email:</strong> {{ user.email }}<br>
+    <strong>Address:</strong> {{ user.profile.address }}<br>
+    <a href="{% url 'editProfile' %}"><input type="button" value="Edit Profile" class="btn btn-info" /></a>
+</p><br>
 <h4>Your Posts:</h4>
 <div class="all-products">
     <div class="card-deck">
@@ -38,7 +43,42 @@
 <a href="{% url 'addItem' %}"><input type="button" value="Add item" class="btn btn-primary" /></a>
 <br>
 <br>
-<h4>Order History:</h4>
+<h4>Order History:</h4><br>
+{% for order in order_history %}
+    <hr>
+    <div class="row">
+        <div class="col-sm-5">
+            <strong>Ordered on: </strong>{{ order.orderDate }}
+        </div>
+        <div class="col-sm-7">
+            <strong>Ordered to:</strong> {{ order.address }}
+        </div>
+    </div>
+    <br>
+    <!-- <hr style="width:70%;"> -->
+    {% for item in order.products.all %}
+        <div class="row">
+            <div class="col-sm-4">
+            </div>
+            <div class="col-sm-4">
+                <span style="float:right;">{{ item.product.title }}  &times; {{ item.quantity }}</span>
+            </div>
+            <div class="col-sm-4">
+                <span style="float:right;">CDN ${{ item.get_total_price }}</span>
+            </div>
+        </div>
+    {% endfor %}
+    <hr style="width:80%;">
+    <div class="row">
+        <div class="col-sm-8">
+        </div>
+        <div class="col-sm-4">
+            <span style="float:right;"><strong>Total: CDN ${{ order.get_total_price }}</strong></span>
+        </div>
+    </div>
+    <hr>
+    <br>
+{% endfor %}
 <br><br>
 <h4>Chat Room</h4>
 <p>Enter the room admin to speak with the manager of the site</p>

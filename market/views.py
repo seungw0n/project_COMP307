@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Product, OrderItem, Order
 from .forms import ProductForm, CartForm
+from accounts.forms import EditProfileForm
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.urls import reverse
@@ -45,8 +46,35 @@ def myspace(request):
     if orders.exists():
         order = orders[0]
         context['order'] = order
+    order_history = Order.objects.all().filter(user=request.user, ordered=True)
+    if order_history.exists():
+        context['order_history'] = order_history
         
     return render (request, 'myspace.html', context)
+    
+@login_required
+def editProfile(request):
+    context = {'products': Product.objects.all().filter(owner=request.user)}
+    orders = Order.objects.all().filter(user=request.user, ordered=False)
+    if orders.exists():
+        order = orders[0]
+        context['order'] = order
+    order_history = Order.objects.all().filter(user=request.user, ordered=True)
+    if request.method == 'POST':
+        form = EditProfileForm(request.POST)
+        if form.is_valid():
+            user = request.user
+            user.first_name = form.data['first_name']
+            user.last_name = form.data['last_name']
+            user.email = form.data['email']
+            user.profile.first_name = form.cleaned_data.get('first_name')
+            user.profile.last_name = form.cleaned_data.get('last_name')
+            user.profile.email = form.cleaned_data.get('email')
+            user.profile.address = form.cleaned_data.get('address')
+            user.save()
+            return redirect('myspace')
+    
+    return render (request, 'editProfile.html', context)
 
 @login_required
 def addItem(request):
