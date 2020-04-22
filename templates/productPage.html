@@ -35,12 +35,12 @@ Product Description:<br>
                 {% csrf_token %}
                 <input type="hidden" name="product" value="{{ product.id }}">
                 Quantity: <input type="number" class="form-control" name="quantity" min="0" required="required" style="width:70px;margin-bottom:10px;" />
-                {{ form.quantity.errors }}
+				{{ form.quantity.errors }}
         		<div class="btn-group cart">
         			<button type="submit" class="btn btn-success">
         				Add to cart
         			</button>
-        		</div>
+				</div>
             </form>
         		<!-- <div class="btn-group wishlist">
         			<button type="button" class="btn btn-danger">

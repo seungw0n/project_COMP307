@@ -30,6 +30,7 @@
             Quantity:{{ item.quantity }}
         </a>
     </div>
+    
     <div class="col-md-4">
         <form method="post" action="{% url 'changeQuantity' %}">
             {% csrf_token %}
@@ -46,6 +47,20 @@
         </form>
     </div>
 </div>
+{% if item.quantity > item.product.inventoryCount %}
+        <p style ="color:red;">Too many items, you must remove some to continue</p>   
+        <style>
+            a.checkout{
+                pointer-events: none;
+                cursor: default;
+                
+            }
+            #checkoutInput{
+                background-color:white ;
+                border-color:white;
+            }
+        </style>  
+    {% endif %}
 {% endfor %}
 <br>
 <hr>
@@ -56,7 +71,8 @@ Your cart is currently empty.
 {% endif %}
 
 {% if request.user.profile.address %}
-<a href="{%url 'details'%}"><input type="button" value="Checkout" class="btn btn-primary" /></a>
+<a href="{%url 'details'%}" class="checkout"><input id="checkoutInput" type="button" value="Checkout" class="btn btn-primary" /></a>
+
 {% else %}
 
 You must enter a delivery address in your profile to checkout.
