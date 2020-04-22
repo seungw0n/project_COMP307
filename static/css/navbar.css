@@ -5,7 +5,9 @@
 }
 
 body{
-    background-color: white
+    display: flex;
+    flex-direction: column;
+    background-color: white;
 }
 
 a {
@@ -13,11 +15,13 @@ a {
 }
 ul { list-style: none; }
 
-footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-}
+/* footer {
+    color: #707070;
+    height: 2em;
+    position: static;
+    font-size: small;
+    width:100%;
+} */
 .bottomNavBar {
     justify-content: center;
     align-items: center;
@@ -64,3 +68,4 @@ footer {
     align-items: flex-end;
     text-decoration: none;
     font-size: 1.5em;
+}

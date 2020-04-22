@@ -1,20 +1,25 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>My Account</h2>
+<h3>My Account</h3>
 <p style="margin-left:15px;">
+    <br>
     <strong>Name:</strong> {{ user.first_name }} {{ user.last_name }}<br>
     <strong>Email:</strong> {{ user.email }}<br>
-    <strong>Address:</strong> {{ user.profile.address }}<br>
-    <a href="{% url 'editProfile' %}"><input type="button" value="Edit Profile" class="btn btn-info" /></a>
-</p><br>
+    <strong>Address:</strong> {{ user.profile.address }}<br><br>
+</p>
+<div class="col text-center">
+    <a href="{% url 'editProfile' %}"><input type="button" value="Edit Profile" class="btn-outline-dark btn" /></a>
+</div>
+<br>
+<hr>
 <h4>Your Posts:</h4>
 <div class="all-products">
     <div class="card-deck">
         {% for product in products %}
         <!-- <div class="product">
             <h4><a href="{{product.image_url}}">{{ product.title }}</a></h2>
-               
+
                 <img class="product-img" src="{{product.image_url}}" alt="pic">
                 <h4> {{product.price}} $</h4>
                 <p class="description">{{product.description}}</p>
@@ -39,9 +44,12 @@
     </div>
 </div>
 
-
-<a href="{% url 'addItem' %}"><input type="button" value="Add item" class="btn btn-primary" /></a>
 <br>
+<div class="col text-center">
+<a href="{% url 'addItem' %}"><input type="button" value="Add item" class="btn-outline-dark btn" /></a>
+</div>
+<br>
+<hr>
 <br>
 <h4>Order History:</h4><br>
 {% for order in order_history %}
@@ -76,8 +84,8 @@
             <span style="float:right;"><strong>Total: CDN ${{ order.get_total_price }}</strong></span>
         </div>
     </div>
-    <hr>
     <br>
+    <hr>
 {% endfor %}
 <br><br>
 <h4>Chat Room</h4>

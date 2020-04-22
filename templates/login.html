@@ -4,11 +4,16 @@
 <!-- <div class="container"> -->
 <div class="form-login">
     <br />
-    <h2>Login</h2>
+    <h2>LOGIN</h2>
+    <hr>
     <form method="post" novalidate>
         {% csrf_token %}
         {% include 'includes/form.html' %}
-        <button type="submit" class="btn btn-primary">Sign into your account</button>
+        <hr>
+        <div class="col text-center">
+            <br>
+            <button type="submit" class="btn-outline-dark btn">Sign into your account</button>
+        </div>
     </form>
 </div>
 <!-- </div> -->
