@@ -7,9 +7,10 @@
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {% include 'includes/formItem.html' %}
-            <button type="submit" class="btn btn-primary">Add</button>
-            <a href="{% url 'home' %}"><input type="button" value="Back" class="btn btn-primary" /></a>
-
+            <div class="col text-center">
+            <button type="submit" class="btn-outline-dark btn">Add</button>
+            <a href="{% url 'home' %}"><input type="button" value="Back" class="btn-outline-dark btn" /></a>
+            </div>
         </form>
     </div>
 </div>

@@ -3,7 +3,9 @@
 <div class="container">
     <div class="form-modifyProduct">
         <br />
-        <h2>Change Address</h2><br><br>
+        <h2>Change Address</h2><br>
+        <hr>
+        <br>
         <form method="post" action="{% url 'editProfile' %}">
             {% csrf_token %}
             <div class="form-group row" style="margin-left:50px;">
@@ -13,21 +15,24 @@
                     <input type="text" class="form-control" value ="{{ user.last_name }}" name="last_name" required="required" />
                 </div>
             </div>
+            <br>
             <div class="form-group row" style="margin-left:50px;">
                 <label for="inputEmail" class="col-sm-3 col-form-label">Email</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control" id="inputEmail" value ="{{ user.email }}" name="email" required="required" />
                 </div>
             </div>
+            <br>
             <div class="form-group row" style="margin-left:50px;">
                 <label for="inputAddress" class="col-sm-3 col-form-label">Address</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control" id="inputAddress" value ="{{ user.profile.address }}" name="address" required="required" />
                 </div>
-            </div><br>
-            <button type="submit" class="btn btn-primary">Save</button>
-            <a href="{% url 'myspace' %}"><input type="button" value="Back" class="btn btn-primary" /></a>
-
+            </div><br><br>
+            <div class="col text-center">
+            <button type="submit" class="btn-outline-dark btn">Save</button>
+            <a href="{% url 'myspace' %}"><input type="button" value="Back" class="btn-outline-dark btn" /></a>
+            </div>
         </form>
     </div>
 </div>
