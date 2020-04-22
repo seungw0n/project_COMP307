@@ -158,3 +158,5 @@ MEDIA_ROOT = '/Users/victormassenet/OneDrive/Documents/McGill_S6/COMP307/project
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 STRIPE_SECRET_KEY = 'sk_test_72fkv6dFA6blL2XyOjbOVdVm009yU5Asrt'
 STRIPE_PUBLISHABLE_KEY = 'pk_test_SMDTVSddJhrVWotnREfGTQ2200sFnb3O5y'
+
+AUTH_PROFILE_MODULE = 'accounts.Profile'

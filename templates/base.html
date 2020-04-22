@@ -46,7 +46,7 @@
                         <i class="fas fa-shopping-cart"></i> {{ order.products.all|length }}
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown2">
-                        {% if order %}
+                        {% if order and not order.ordered %}
                             {% for item in order.products.all %}
                                 <a href="{% url 'productPage' product_id=item.product.id %}">
                                     <div class="dropdown-item">
@@ -97,7 +97,7 @@
         {% block content %}
         {% endblock %}
     </div>
-    {% include 'includes/footer.html' %}
+    <!-- {% include 'includes/footer.html' %} -->
     {% endblock body %}
 
     <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
